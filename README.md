@@ -91,3 +91,26 @@ python main.py
 As mensagens no terminal mostram a validação das credenciais, o IP encontrado
 e os registros atualizados. Para execução automática, agende esse comando no
 Agendador de Tarefas do Windows ou no `cron`.
+
+### Agendamento no Windows
+
+1. Abra o **Agendador de Tarefas** (`taskschd.msc`) e selecione **Criar Tarefa**.
+2. Na aba **Geral**, informe um nome, como `PyCloudflareDDNS`.
+3. Na aba **Disparadores**, clique em **Novo** e escolha **Ao fazer logon** ou
+   **Ao iniciar o computador**.
+4. Na aba **Ações**, clique em **Nova** e preencha:
+
+   - **Programa/script:**
+     `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
+   - **Adicionar argumentos:**
+     `-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\caminho\para\PyCloudflareDDNS\run.ps1"`
+   - **Iniciar em:** `C:\caminho\para\PyCloudflareDDNS`
+
+5. Na aba **Condições**, desmarque **Iniciar a tarefa somente se o computador
+   estiver ligado à energia da rede elétrica**, caso ela esteja selecionada.
+6. Confirme em **OK**. Use **Executar** no menu de contexto da tarefa para
+   testar imediatamente.
+
+Substitua `C:\caminho\para\PyCloudflareDDNS` pelo caminho real do projeto, caso ele
+esteja em outra pasta. O arquivo `run.ps1` usa o ambiente virtual `.venv` quando
+ele existe e, caso contrário, utiliza o Python disponível no sistema.

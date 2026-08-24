@@ -89,3 +89,25 @@ python main.py
 The terminal output shows credential validation, detected IP addresses, and the
 records that were updated. For automatic execution, schedule this command with
 Windows Task Scheduler or `cron`.
+
+### Scheduling on Windows
+
+1. Open **Task Scheduler** (`taskschd.msc`) and select **Create Task**.
+2. In the **General** tab, enter a name such as `PyCloudflareDDNS`.
+3. In the **Triggers** tab, click **New** and choose **At log on** or
+   **At startup**.
+4. In the **Actions** tab, click **New** and fill in:
+
+   - **Program/script:**
+     `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
+   - **Add arguments:**
+     `-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\path\to\PyCloudflareDDNS\run.ps1"`
+   - **Start in:** `C:\path\to\PyCloudflareDDNS`
+
+5. In the **Conditions** tab, clear **Start the task only if the computer is
+   on AC power**, if it is selected.
+6. Click **OK**. Right-click the task and select **Run** to test it immediately.
+
+Replace `C:\path\to\PyCloudflareDDNS` with the actual project path if it is in
+another folder. The `run.ps1` script uses the `.venv` virtual environment when
+it exists; otherwise, it uses the Python installation available on the system.
