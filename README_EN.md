@@ -5,6 +5,8 @@
 [![IPv4%20%2B%20IPv6](https://img.shields.io/badge/IPv4%20%2B%20IPv6-supported-2E8B57)](https://github.com/)
 [![License](https://img.shields.io/badge/license-MIT-1f6feb)](LICENSE)
 
+[Versão em português](README.md)
+
 ## About
 
 Automatically updates Cloudflare `A` (IPv4) and `AAAA` (IPv6) DNS records with
